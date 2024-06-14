@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F1F1F1;
+        }
+
+        #main-content {
+            text-align: center;
+        }
+
+        #main-content img {
+            width: 100%;
+            height: 520px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        #sticky-menu {
+            position: sticky;
+            top: 0;
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+        }
+
+        #sticky-menu a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 18px;
+        }
+
+        #street-view {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #street-view img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        #info {
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        #info h2 {
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        #robot-container {
+            position: flex;
+            width: 75px;
+            height: 75px;
+            align-items: right;
+            text-align: right;
+            justify-content: right;
+            float: right;
+        }
+
+        #robot-image {
+            width: 100%;
+            height: 100%;
+            border: 0px solid;
+            border-radius: 50px;
+        }
+
+        .speech-bubble {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 11.5px;
+            padding: 10px;
+            box-shadow: 0 5px 5px rgba(0, 0, 0, 0.9);
+            max-width: 200px;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .form-container {
+            flex: 2;
+            padding: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .input-group button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background-color: dodgerblue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .input-group button:hover {
+            background-color: dodgerblue;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .show {
+            visibility: visible;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @media screen and (max-width: 767px) {
+            #street-view {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(6, 1fr);
+                gap: 10px;
+            }
+
+            #street-view img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .custom-alert {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            z-index: 1000;
+            text-align: center;
+        }
+
+        .custom-alert h2 {
+            margin-bottom: 10px;
+        }
+
+        .custom-alert p {
+            margin-bottom: 20px;
+        }
+
+        .custom-alert .buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .custom-alert .buttons button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .custom-alert .buttons .yes-button {
+            background-color: dodgerblue;
+            color: white;
+        }
+
+        .custom-alert .buttons .no-button {
+            background-color: gray;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p class="subtitle">/* 주변의 가까운 거리를 임의로 선정한<br>테스트 버전 임을 명시 드립니다. */</p>
+    </div>
+    <div id="main-content">
+        <img src="testshare1.png" alt="#">
+    </div>
+
+    <div id="sticky-menu">
+        <a href="new_hov1.html">편의시설</a>
+        <a href="cap.html">택시 호출</a>
+        <a href="bus_info.html">버스 시간표 확인</a>
+    </div>
+    <div class="form-container">
+        <div class="input-group">
+            <label for="start">출발지:</label>
+            <input type="text" id="start" placeholder="백석대학교">
+        </div>
+        <div class="input-group">
+            <label for="destination">도착지:</label>
+            <input type="text" id="destination" placeholder="천안역">
+        </div>
+    </div>
+
+   <div onclick="window.open('3dview2.html')">
+<div id="info" onclick="showInfo()">
+    <div id="robot-container">
+        <img id="robot-image" src="robot.jpg" alt="Robot">
+        <div class="speech-bubble" id="speech-bubble"></div>
+    </div>
+    <h2>주변의 스트리트 뷰</h2>
+    <p>이미지를 통해 주변 환경을 간단히 확인하세요.</p>
+</div>
+
+    <div id="street-view">
+        <img src="ch1.png" alt="#">
+        <img src="ch2.png" alt="#">
+        <img src="ch3.png" alt="#">
+        <img src="ch4.png" alt="#">
+        <img src="ch5.png" alt="#">
+        <img src="ch6.png" alt="#">
+    </div>
+
+    <div id="custom-alert" class="custom-alert" style="display: none;">
+        <h2>안내</h2>
+        <p>경로를 <br>공유 하실래요?</p>
+        <div class="buttons">
+            <button class="yes-button" onclick="handleYesClick()">예 (<span id="countdown">5</span>)</button>
+            <button class="no-button" onclick="handleNoClick()">아니오</button>
+        </div>
+    </div>
+
+    <script>
+        const robotImage = document.getElementById('robot-image');
+        const speechBubble = document.getElementById('speech-bubble');
+        const sentences = [
+            '',
+            '보호자에게\n경로를\n공유해 보세요!',
+            '"편의시설"은 주변의',
+            '편의시설을 안내해 드려요',
+            '택시를 불러 드릴가요?',
+            '새로운 경로를 찾아드릴가요?',
+        ];
+
+        let index = 0;
+        let countdownInterval;
+
+        setInterval(() => {
+            speechBubble.classList.remove('show');
+            setTimeout(() => {
+                index = (index + 1) % sentences.length;
+                speechBubble.innerText = sentences[index];
+                speechBubble.classList.add('show');
+            }, 500);
+        }, 2500);
+
+        function showAlert() {
+            const alertBox = document.getElementById('custom-alert');
+            alertBox.style.display = 'block';
+            startCountdown();
+        }
+
+        function handleYesClick() {
+            clearInterval(countdownInterval);
+            window.location.href = 'testshare2.html';
+        }
+
+        function handleNoClick() {
+            const alertBox = document.getElementById('custom-alert');
+            alertBox.style.display = 'none';
+            window.location.href = 'testsharenone.html'
+        }
+
+        function startCountdown() {
+            let countdown = 5;
+            const countdownElement = document.getElementById('countdown');
+            countdownElement.textContent = countdown;
+
+            countdownInterval = setInterval(() => {
+                countdown -= 1;
+                countdownElement.textContent = countdown;
+
+                if (countdown <= 0) {
+                    clearInterval(countdownInterval);
+                    window.location.href = 'testshare2.html';
+                }
+            }, 1000);
+        }
+
+        // Show the alert when the page loads
+        window.onload = showAlert;
+    </script>
+</body>
+</html>
