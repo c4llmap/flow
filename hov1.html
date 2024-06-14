@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Convenience Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F1F1F1;
+        }
+
+        #facility-info {
+            text-align: center;
+            padding: 20px;
+        }
+
+        #facility-info img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        #facility-description {
+            background-color: #FFF;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            margin: 20px;
+        }
+
+        /*robot container*/
+    #robot-container {
+            position: relative;
+            width: 75px;
+            height: 75px;
+            align-items: center;
+            text-align: center;
+            justify-content:center;
+            padding-top: 10px;
+            margin-left: 10px;
+        }
+
+        #robot-image {
+            width: 100%;
+            height: 100%;
+            border:0px solid;
+            border-radius: 50%;
+        }
+
+        .speech-bubble {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 11.5px;
+            padding: 10px;
+            box-shadow: 0 5px 5px rgba(0, 0, 0, 0.9);
+            max-width: 200px;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            text-align: center;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .show {
+            visibility: visible;
+            animation: fadeIn 0.5s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <div class="center-content">
+        <div id="robot-container">
+            <img id="robot-image" onclick="window.open('https://c4llmap.github.io/qr/3dview.html')" src="robot.jpg" alt="Robot">
+            <div class="speech-bubble" id="speech-bubble"></div>
+        </div>
+    </div>
+<div id="facility-info">
+    <h2>주변 편의 시설</h2>
+    <img src="toilet.png" alt="#" style="width:150px; height:150px; margin-bottom:0; padding-bottom:0;">
+    <div id="facility-description" onclick="window.open('toilet.html')">
+        <h3>화장실</h3>
+        <p><b>현재 계신 곳 주변에 가까운 화장실이 있습니다.<br>이곳의 화장실은 깨끗한 환경을 제공합니다.</b></p>
+        <p><b><i class="fa fa-location-arrow" style="font-size:24px" onclick="window.open('toilet.html')"></i>위치 안내<b></p>
+    </div>
+
+    <img src="restaurant.png" alt="#" style="width:150px; height:150px; margin-bottom:0; padding-bottom:0;">
+    <div id="facility-description" onclick="window.open('food.html')">
+        <h3>음식점</h3>
+        <p>신선한 재료로 만든 다양한 메뉴를 즐길 수 있는 음식점입니다.<br>양식부터 한식 일식 까지, 편안한 분위기에서 맛있는 음식을 즐겨보세요.</p>
+        <p><b><i class="fa fa-location-arrow" style="font-size:24px" onclick="window.open('food.html')"></i>위치 안내<b></p>
+    </div>
+
+    <img src="coffee.png" alt="#" style="width:150px; height:150px; margin-bottom:0; padding-bottom:0;">
+    <div id="facility-description" onclick="window.open('caffe.html')">
+        <h3>카페</h3>
+        <p>바쁜 일상 속에<br> 커피 한잔의 여유는 어떠신가요?</p>
+        <p><b><i class="fa fa-location-arrow" style="font-size:24px" onclick="window.open('caffe.html')"></i>위치 안내<b></p>
+    </div>
+
+    <img src="bus_stop.png" alt="#" style="width:150px; height:150px; margin-bottom:0; padding-bottom:0;">
+    <div id="facility-description" onclick="window.open('bus_service.html')">
+        <h3>버스 정류장</h3>
+        <p>주변의 가까운 버스 정류장을 찾아 드릴게요.</p>
+        <p><b><i class="fa fa-location-arrow" style="font-size:24px" onclick="window.open('bus_service.html')"></i>위치 안내<b></p>
+    </div>
+</div>
+<script>
+     /*robot container*/
+     const robotImage = document.getElementById('robot-image');
+    const speechBubble = document.getElementById('speech-bubble');
+    const sentences = [
+        '',
+        '터미널 주변의 \n 편의시설 들이에요',
+        '가까운 곳에 맛있는 \n 음식점이 있어요',
+        '가고 싶으신 곳을 말씀해주세요',
+        '어디로 안내해 드릴까요',
+    ];
+
+    let index = 0;
+
+    setInterval(() => {
+        speechBubble.classList.remove('show');
+        setTimeout(() => {
+            index = (index + 1) % sentences.length;
+            speechBubble.innerText = sentences[index];
+            speechBubble.classList.add('show');
+        }, 500);
+    }, 2500);
+</script>
+<!-- Additional content goes here -->
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Street View</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        #street-view {
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div id="street-view"></div>
+
+    <script>
+        // Initialize street view
+        function initStreetView() {
+            var panorama = new google.maps.StreetViewPanorama(
+                document.getElementById('street-view'), {
+                    position: { lat: 36.841102, lng: 127.181816 }, 
+                    pov: { heading: 165, pitch: 0 }, 
+                    zoom: 1 
+                });
+            panorama.setOptions({ gestureHandling: 'greedy' });
+        }
+    </script>
+
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGhTKfSyUrOPvwe9y_Lw1vqA67B_DrvCw&callback=initStreetView" async defer></script>
+</body>
+</html>
